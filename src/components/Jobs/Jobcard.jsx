@@ -1,12 +1,21 @@
-import { Link } from "react-router-dom";
-import { formatDate, formatSalary, truncateText } from "../../utils/helpers";
-import './jobs.css';
+import { Link } from 'react-router-dom';
+import { formatDate, formatSalary, truncateText } from '../../utils/helpers';
+import './Jobs.css';
 
 export default function JobCard({ job }) {
     const {
-        id, title, companyName, companyLogo, location,
-        jobType, experienceLevel, salaryMin,
-        salaryMax, description, skills, postedAt,
+        id,
+        title,
+        companyName,
+        companyLogo,
+        location,
+        jobType,
+        experienceLevel,
+        salaryMin,
+        salaryMax,
+        description,
+        skills,
+        postedAt,
         applicationsCount
     } = job;
 
@@ -17,7 +26,7 @@ export default function JobCard({ job }) {
                     {companyLogo && (
                         <img
                             src={companyLogo}
-                            alt={`${companyLogo} logo`}
+                            alt={`${companyName} logo`}
                             className="company-logo"
                             onError={(e) => {
                                 e.target.style.display = 'none';
@@ -26,7 +35,7 @@ export default function JobCard({ job }) {
                     )}
                     <div className="company-details">
                         <h3 className="job-title">
-                            <link to={`/jobs/${id}`}>{title}</link>
+                            <Link to={`/jobs/${id}`}>{title}</Link>
                         </h3>
                         <p className="company-name">{companyName}</p>
                     </div>
@@ -40,49 +49,47 @@ export default function JobCard({ job }) {
             <div className="job-card-body">
                 <div className="job-info">
                     <div className="info-item">
-                        <span className="info-icon">ℹ️</span>
+                        <span className="info-icon">📍</span>
                         <span>{location}</span>
                     </div>
                     <div className="info-item">
-                        <span className="info-icon">💵</span>
+                        <span className="info-icon">💰</span>
                         <span>{formatSalary(salaryMin, salaryMax)}</span>
                     </div>
                     <div className="info-item">
-                        <span className="info-icon">📆</span>
-                        <span>{formatDate(postedAt)}</span>
+                        <span className="info-icon">📅</span>
+                        <span>Posted {formatDate(postedAt)}</span>
                     </div>
                     <div className="info-item">
-                        <span className="info-icon">👷</span>
-                        <span>{applicationsCount || 0}</span>
+                        <span className="info-icon">👥</span>
+                        <span>{applicationsCount || 0} applicants</span>
                     </div>
                 </div>
+
                 <p className="job-description">
-                    {truncateText(description, 100)}
+                    {truncateText(description, 120)}
                 </p>
 
                 {skills && skills.length > 0 && (
                     <div className="job-skills">
                         {skills.slice(0, 4).map((skill, index) => (
-                            <span key={index} className="skill-tag">
-                                {skill}</span>
+                            <span key={index} className="skill-tag">{skill}</span>
                         ))}
                         {skills.length > 4 && (
-                            <span className="skill-tag more">
-                                +{skills.length - 4} more
-                            </span>
+                            <span className="skill-tag more">+{skills.length - 4} more</span>
                         )}
                     </div>
                 )}
             </div>
 
             <div className="job-card-footer">
-                <Link to={`/jobs/${id}`}
-                    className="view-job-btn">
-                    View Details </Link>
+                <Link to={`/jobs/${id}`} className="view-job-btn">
+                    View Details
+                </Link>
                 <button className="save-job-btn" title="Save Job">
-                    🩷
+                    ❤️
                 </button>
             </div>
         </div>
-    )
+    );
 }

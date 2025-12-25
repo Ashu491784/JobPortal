@@ -1,6 +1,6 @@
 .dashboard-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%);
+    background: linear-gradient(135deg, #e8f5e9 0%, #db47bf 50%, #ce3939 100%);
     padding: 20px;
     position: relative;
     animation: dashboardGradientShift 15s ease infinite;
@@ -109,7 +109,7 @@
     font-size: 32px;
     font-weight: 700;
     margin: 0;
-    background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 50%, #81C784 100%);
+    background: linear-gradient(135deg, #5b1daa 0%, #4CAF50 50%, #81C784 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
